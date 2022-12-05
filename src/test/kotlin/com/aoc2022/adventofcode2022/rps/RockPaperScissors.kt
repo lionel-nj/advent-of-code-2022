@@ -8,17 +8,30 @@ class RockPaperScissors {
     @Test
     fun rockPaperScissors() {
         val inputStream = readFile("/rock-paper-scissors.txt")
-        val score = inputStream.bufferedReader().readLines().map {
+        val dumbSolutionScores = emptyList<Int>().toMutableList()
+        val smartSolutionScores = emptyList<Int>().toMutableList()
+        inputStream.bufferedReader().readLines().map {
             val line = it.split(" ")
             val opponentMove = GameOption.create(line[0])
-            val elfSuggestion = ElfSuggestion.create(line[1])
-            val myMove = Strategy(opponentMove, elfSuggestion).suggestMove()
-            Round(
-                opponentMove = opponentMove,
-                myMove = myMove
+            val myMove = GameOption.create(line[1])
+            dumbSolutionScores.add(
+                Round(
+                    opponentMove = opponentMove,
+                    myMove = myMove
+                )
+                    .getScore()
             )
-                .getScore()
-        }.sumOf { it }
-        println("Answer to question #2 is: $score")
+            val elfSuggestion = ElfSuggestion.create(line[1])
+
+            smartSolutionScores.add(
+                Round(
+                    opponentMove = opponentMove,
+                    myMove = Strategy(opponentMove, elfSuggestion).suggestMove()
+                )
+                    .getScore()
+            )
+        }
+        println("Answer to question #1 is: ${dumbSolutionScores.sumOf { it }}")
+        println("Answer to question #2 is: ${smartSolutionScores.sumOf { it }}")
     }
 }

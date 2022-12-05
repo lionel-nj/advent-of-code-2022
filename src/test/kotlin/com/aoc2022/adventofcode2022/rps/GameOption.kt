@@ -30,8 +30,11 @@ enum class GameOption(
     companion object {
         private val gameOptionMap = mapOf(
             Pair("A", ROCK),
+            Pair("X", ROCK),
             Pair("B", PAPER),
-            Pair("C", SCISSORS)
+            Pair("Y", PAPER),
+            Pair("C", SCISSORS),
+            Pair("Z", SCISSORS)
         )
 
         fun create(sign: String): GameOption {
