@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>advent-of-code-2022</artifactId>
+	<groupId>aoc2022</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>advent-of-code-2022</name>
 	<description>Advent of code 2022</description>
@@ -28,7 +29,6 @@
 	</dependencies>
 
 	<build>
-		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 		<plugins>
 			<plugin>
