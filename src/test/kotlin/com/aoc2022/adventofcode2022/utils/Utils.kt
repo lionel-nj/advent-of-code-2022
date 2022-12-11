@@ -17,5 +17,8 @@ class Utils {
         fun String.toCharList(): List<Char> {
             return this.toCharArray().toList()
         }
+        fun List<Char>.allUnique(): Boolean {
+            return this.toSet().size == this.size
+        }
     }
 }
